@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Form.css";
+
 const Form = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     username: "",
@@ -15,7 +16,6 @@ const Form = ({ onSubmit }) => {
     setFormData({ ...formData, [name]: value });
     setErrorMsg({ ...error_msg, [name]: "" });
   };
-
   const validateForm = () => {
     let isValid = true;
     let errors = { username: "", email: "", rating: "", comments: "" };
@@ -57,10 +57,9 @@ const Form = ({ onSubmit }) => {
     if (validateForm()) {
       onSubmit(formData);
       setFormData({ username: "", email: "", rating: "", comments: "" });
-      navigate("/Submissions");
+      navigate("/Submission");
     }
   };
-
   return (
     <div className="container">
       <form className="form" onSubmit={handleSubmit}>
@@ -73,7 +72,7 @@ const Form = ({ onSubmit }) => {
             name="username"
             onChange={(e) => handleChange(e)}
             placeholder="E.g. jon snow"
-            value={formData.name}
+            value={formData.username}
           />
           {error_msg.username && <p className="error">{error_msg.username}</p>}
         </div>
@@ -94,7 +93,7 @@ const Form = ({ onSubmit }) => {
           <label>Rating</label>
           <input
             className="form-item-2"
-            type="number "
+            type="number"
             name="rating"
             min="1"
             max="5"

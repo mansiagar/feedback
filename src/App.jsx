@@ -1,26 +1,26 @@
 import React, { useState } from "react";
-import Form from "./Components/Form";
-import Submission from "./Components/Submission";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-const App = () => {
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import Form from "./Component/Form";
+import Submission from "./Component/Submission";
+
+function App() {
   const [submissions, setSubmissions] = useState([]);
 
   const handleFormSubmit = (formData) => {
     setSubmissions([...submissions, formData]);
   };
+
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Form onSubmit={handleFormSubmit} />} />
-          <Route
-            path="Submissions"
-            element={<Submission submissions={submissions} />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Form onSubmit={handleFormSubmit} />} />
+        <Route
+          path="/submission"
+          element={<Submission submissions={submissions} />}
+        />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;

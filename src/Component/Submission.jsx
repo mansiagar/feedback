@@ -2,7 +2,6 @@ import React from "react";
 import "./Submission.css";
 
 const Submission = ({ submissions }) => {
-  console.log(submissions);
   return (
     <div>
       <table className="table">
