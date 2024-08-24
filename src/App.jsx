@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Route,
+  Routes,
+  HashRouter,
+} from "react-router-dom";
 import Form from "./Component/Form";
 import Submission from "./Component/Submission";
 
@@ -11,7 +16,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Form onSubmit={handleFormSubmit} />} />
         <Route
@@ -19,7 +24,7 @@ function App() {
           element={<Submission submissions={submissions} />}
         />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 
